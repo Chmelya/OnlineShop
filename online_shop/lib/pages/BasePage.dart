@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/pages/CatalogPage.dart';
 
 class BasePage extends StatefulWidget{
   @override
@@ -12,7 +13,7 @@ class _BaseState extends State<BasePage>
   //окна
   final tabs = [
     SafeArea(child: Center(child: Text('Home'))),
-    SafeArea(child: Center(child: Text('Search'))),
+    CatalogPage(),
     SafeArea(child: Center(child: Text('Cart'))),
     SafeArea(child: Center(child: Text('Profile'))),
   ];
