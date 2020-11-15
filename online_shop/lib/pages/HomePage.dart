@@ -11,10 +11,10 @@ class _HomeState extends State<HomePage>
 
   //окна
   final tabs = [
-    Center(child: Text('Home')),
-    Center(child: Text('Search')),
-    Center(child: Text('Cart')),
-    Center(child: Text('Profile')),
+    SafeArea(child: Text('Home')),
+    SafeArea(child: Text('Search')),
+    SafeArea(child: Text('Cart')),
+    SafeArea(child: Text('Profile')),
   ];
 
   @override
