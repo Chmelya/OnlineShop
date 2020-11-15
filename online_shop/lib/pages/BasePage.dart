@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget{
+class BasePage extends StatefulWidget{
   @override
-  _HomeState createState() => _HomeState(); 
+  _BaseState createState() => _BaseState(); 
 }
 
-class _HomeState extends State<HomePage>
+class _BaseState extends State<BasePage>
 {
   int _currentIndex = 0;
 
   //окна
   final tabs = [
-    SafeArea(child: Text('Home')),
-    SafeArea(child: Text('Search')),
-    SafeArea(child: Text('Cart')),
-    SafeArea(child: Text('Profile')),
+    SafeArea(child: Center(child: Text('Home'))),
+    SafeArea(child: Center(child: Text('Search'))),
+    SafeArea(child: Center(child: Text('Cart'))),
+    SafeArea(child: Center(child: Text('Profile'))),
   ];
 
   @override
