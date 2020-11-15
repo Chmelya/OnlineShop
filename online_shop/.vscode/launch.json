@@ -8,7 +8,6 @@
             "name": "online_shop",
             "request": "launch",
             "type": "dart",
-            "program": "lib/widgets/main.dart"
         }
     ]
 }
