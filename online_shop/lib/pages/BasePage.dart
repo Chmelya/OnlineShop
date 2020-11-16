@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/pages/CatalogPage.dart';
+import 'package:online_shop/models/Product.dart';
+import 'package:online_shop/pages/components/ProductTile.dart';
 
 class BasePage extends StatefulWidget{
   @override
