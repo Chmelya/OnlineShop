@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/pages/CatalogPage.dart';
 import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/pages/components/ProductTile.dart';
+import 'package:online_shop/pages/components/ProductItem.dart';
 
 class BasePage extends StatefulWidget{
   @override
@@ -24,7 +24,7 @@ class _BaseState extends State<BasePage>
   Widget build(BuildContext context){
     return Scaffold(
       appBar: buildAppBar(),
-      body: tabs[_currentIndex],
+      body: CatalogPage(), //tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.shifting,
@@ -64,10 +64,13 @@ class _BaseState extends State<BasePage>
 
   AppBar buildAppBar() {
     return AppBar(
+      backgroundColor: Colors.indigo,
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back), 
+        onPressed: () {},
+      ),
       title: new Text("Shop"),
-        actions: <Widget>[
-          //конпки поиска и корзины
-        ],
     );
   }
 }
