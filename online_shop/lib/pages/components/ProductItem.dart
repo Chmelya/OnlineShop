@@ -24,7 +24,10 @@ class ProductItem extends StatelessWidget {
                 color: Colors.cyan,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Image.asset(product.image),
+              child: Hero(
+                tag: "${product.id}",
+                child: Image.asset(product.image)
+              ),
             ),
           ),
           Padding(

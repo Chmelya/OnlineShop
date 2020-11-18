@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Product.dart';
+import 'package:online_shop/pages/components/AddToCart.dart';
+import 'package:online_shop/pages/components/CartCounter.dart';
+import 'package:online_shop/pages/components/ProductTileWithImage.dart';
 
 class Body extends StatelessWidget{
   final Product product;
@@ -16,7 +19,7 @@ class Body extends StatelessWidget{
             child: Stack(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: size.height * 0.4),
+                  margin: EdgeInsets.only(top: size.height * 0.3 + 50),
                   height: 400,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -25,55 +28,26 @@ class Body extends StatelessWidget{
                       topRight: Radius.circular(24),
                     ),
                   ),
-                ),
-                Padding( 
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Beautiful Hand bag",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        product.title,
-                        style: Theme.of(context)
-                        .textTheme
-                        .headline4
-                        .copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 60,
+                          ),
+                          child: Text(  
+                            product.description,
+                            style: TextStyle(height: 1.5),
+                          ),
                         ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          RichText(
-                            text: TextSpan(children: [
-                              TextSpan(text: "Price\n"),
-                              TextSpan(
-                                text: "\$${product.price}",
-                                style: Theme.of(context)
-                                .textTheme
-                                .headline4
-                                .copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ), 
-                              ),
-                            ])
-                          ),
-                          SizedBox(width: 20),
-                          Expanded(
-                            child: Image.asset(
-                              product.image,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                        CartCounter(),
+                        AddToCart(),
+                      ],
+                    ),
                   ),
                 ),
+                ProductTileWithImage(product: product),
               ],
             ),
           ),
