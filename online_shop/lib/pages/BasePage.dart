@@ -24,7 +24,7 @@ class _BaseState extends State<BasePage>
   Widget build(BuildContext context){
     return Scaffold(
       appBar: buildAppBar(),
-      body: CatalogPage(), //tabs[_currentIndex],
+      body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.shifting,
