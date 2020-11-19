@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/pages/components/AddToCart.dart';
-import 'package:online_shop/pages/components/CartCounter.dart';
-import 'package:online_shop/pages/components/ProductTileWithImage.dart';
+import 'package:online_shop/pages/CatalogPage/components/AddToCart.dart';
+import 'package:online_shop/pages/CatalogPage/components/CartCounter.dart';
+import 'package:online_shop/pages/CatalogPage/components/ProductTileWithImage.dart';
 
 class Body extends StatelessWidget{
   final Product product;
