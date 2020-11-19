@@ -10,8 +10,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title:'Shop',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        backgroundColor: Colors.greenAccent,
         textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,
         ),

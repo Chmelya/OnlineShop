@@ -10,6 +10,7 @@ class Cart {
 
 }
 
+//double sum;
 double cartSum(List<Cart> cart){
   double sum = 0.0;
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/pages/CartPage/CartPage.dart';
 import 'package:online_shop/pages/CatalogPage/CatalogPage.dart';
-import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/pages/CatalogPage/components/ProductItem.dart';
 
 class BasePage extends StatefulWidget{
   @override
@@ -13,19 +11,11 @@ class _BaseState extends State<BasePage>
 {
   int _currentIndex = 0;
 
-  //окна
-  final tabs = [
-    SafeArea(child: Center(child: Text('Home'))),
-    CatalogPage(),
-    SafeArea(child: Center(child: Text('Cart'))),
-    SafeArea(child: Center(child: Text('Profile'))),
-  ];
-
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      //appBar: buildAppBar(),
-      body: CartPage(), //tabs[_currentIndex],
+      appBar: buildAppBar(context),
+      body: CatalogPage(), //tabs[_currentIndex],
       // bottomNavigationBar: BottomNavigationBar(
       //   currentIndex: _currentIndex,
       //   type: BottomNavigationBarType.shifting,
@@ -63,15 +53,41 @@ class _BaseState extends State<BasePage>
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.indigo,
+      backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back), 
-        onPressed: () {},
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   color: Colors.black, 
+      //   onPressed: () {},
+      // ),
+      title: Text(
+        "Shop",
+        style: TextStyle(
+          color: Colors.black,
+        ),
       ),
-      title: new Text("Shop"),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.shopping_cart_outlined,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CartPage()), 
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.account_circle_outlined,
+            color: Colors.black,
+          ),
+          onPressed: () {},
+        ),
+        SizedBox(width: 10),
+      ],
     );
   }
 }

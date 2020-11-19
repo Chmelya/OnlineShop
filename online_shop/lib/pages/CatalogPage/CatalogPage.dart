@@ -38,6 +38,7 @@ class MyState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
