@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop/models/Cart.dart';
@@ -13,6 +15,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<CartDataProvider>(
           create: (context) => CartDataProvider(),
+        ),
+        ChangeNotifierProvider<CounterForCart>(
+          create: (context) => CounterForCart(),
         ),
       ],
       child: MaterialApp(

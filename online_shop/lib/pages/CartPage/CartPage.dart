@@ -24,7 +24,7 @@ class CartPage extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "You Cart",
+                "Your Cart",
                 style: TextStyle(color: Colors.black),
               ),
               Text(

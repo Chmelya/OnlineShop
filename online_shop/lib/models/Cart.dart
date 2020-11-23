@@ -13,12 +13,12 @@ class Cart{
 
 class CartDataProvider with ChangeNotifier{
   Map<int, Cart> _cartItems = {
-    1 : Cart(product: products[0], numOfitems: 2),
-    2 : Cart(product: products[1], numOfitems: 1),
-    3 : Cart(product: products[2], numOfitems: 3),
-    4 : Cart(product: products[3], numOfitems: 2),
-    5 : Cart(product: products[4], numOfitems: 1),
-    6 : Cart(product: products[5], numOfitems: 4),
+    // 1 : Cart(product: products[0], numOfitems: 2),
+    // 2 : Cart(product: products[1], numOfitems: 1),
+    // 3 : Cart(product: products[2], numOfitems: 3),
+    // 4 : Cart(product: products[3], numOfitems: 2),
+    // 5 : Cart(product: products[4], numOfitems: 1),
+    // 6 : Cart(product: products[5], numOfitems: 4),
   };
 
   UnmodifiableMapView<int, Cart> get cartItems => 
@@ -58,6 +58,25 @@ class CartDataProvider with ChangeNotifier{
     notifyListeners();
   }
 
+}
+
+class CounterForCart with ChangeNotifier {
+  int value = 1;
+
+  void increment(){
+    value++;
+    notifyListeners();
+  }
+
+  void decrement(){
+    if(value >= 0){
+      value--;
+    }
+  }
+
+  void setStart(){
+    value = 1;
+  }
 }
 
 // double cartSum(List<Cart> cart){

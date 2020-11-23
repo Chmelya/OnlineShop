@@ -37,7 +37,7 @@ class CheckCart extends StatelessWidget {
                 text: "Total:\n",
                 children: [
                   TextSpan(
-                    text: "${cartData.totalAmount()}", //Добавить событие
+                    text: "${cartData.totalAmount()}", 
                     style: TextStyle(fontSize: 16, color: Colors.black), 
                   ),
                 ],
@@ -50,7 +50,10 @@ class CheckCart extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 color: Colors.cyan,
-                onPressed: () {},
+                onPressed: () {
+                  //Покупка корзины. Добавить уведомление и отправка на сервер заказа
+                  Provider.of<CartDataProvider>(context, listen: false).clearCart();
+                },
                 child: Text(
                   "Check out", 
                   style: TextStyle(color: Colors.white),

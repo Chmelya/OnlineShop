@@ -42,7 +42,7 @@ class Body extends StatelessWidget{
                           ),
                         ),
                         CartCounter(),
-                        AddToCart(),
+                        AddToCart(productToBuy: product,),
                       ],
                     ),
                   ),

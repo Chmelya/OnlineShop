@@ -15,9 +15,11 @@ class CatalogPage extends StatefulWidget {
 
 class MyState extends State<CatalogPage> {  
   
-  List questions;
-  String endpoint = "https://api.stackexchange.com/2.2/questions?" +
-  "pagesize=100&order=desc&sort=activity&site=stackoverflow";
+  //Добавить в конструктор url для загрзки спец.списка для виджета
+
+  //List questions;
+  //String endpoint = "https://api.stackexchange.com/2.2/questions?" +
+  //"pagesize=100&order=desc&sort=activity&site=stackoverflow";
 
   @override
   void initState() {
@@ -42,7 +44,7 @@ class MyState extends State<CatalogPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Categories(),
+          Categories(), //Лист с категориями. Добавить счетчик
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -10,12 +10,26 @@ class BasePage extends StatefulWidget{
 class _BaseState extends State<BasePage>
 {
   //int _currentIndex = 0;
+  PageController pageController = PageController(initialPage: 0);
 
+  // вынести категории сюда
+  // добавть переключение на страницу по нажатию на категорию
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: buildAppBar(context),
-      body: CatalogPage(), //tabs[_currentIndex],
+      body: PageView(
+        pageSnapping: true,
+        controller: pageController,
+        onPageChanged: (index){
+          
+        },
+        children: [
+          CatalogPage(),
+          CatalogPage(), 
+        ],
+      ), 
+      //CatalogPage(), //tabs[_currentIndex],
       // bottomNavigationBar: BottomNavigationBar(
       //   currentIndex: _currentIndex,
       //   type: BottomNavigationBarType.shifting,
