@@ -9,7 +9,7 @@ class BasePage extends StatefulWidget{
 
 class _BaseState extends State<BasePage>
 {
-  int _currentIndex = 0;
+  //int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context){

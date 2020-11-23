@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/pages/CartPage/components/CartItemCard.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -10,14 +11,17 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context){
+
+    final cartData = Provider.of<CartDataProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView.builder(
-        itemCount: cart.length,
+        itemCount: cartData.cartItems.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-            key: Key(cart[index].product.id.toString()),
+            key: Key(cartData.cartItems.values.toList()[index].product.id.toString()),
             direction: DismissDirection.endToStart,
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -34,10 +38,10 @@ class _BodyState extends State<Body> {
             ),
             onDismissed: (direction) {
               setState(() {
-                cart.removeAt(index);
+                cartData.deleteItem(cartData.cartItems.keys.toList()[index]);
               });
             },
-            child: CartItemCard(cart: cart[index])
+            child: CartItemCard(cart: cartData.cartItems.values.toList()[index])
           ),
         )
       ),

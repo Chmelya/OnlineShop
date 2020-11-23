@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
+import 'package:provider/provider.dart';
 
 class CheckCart extends StatelessWidget {
   const CheckCart({
@@ -8,6 +9,9 @@ class CheckCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final cartData = Provider.of<CartDataProvider>(context);
+    
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: 15,
@@ -33,7 +37,7 @@ class CheckCart extends StatelessWidget {
                 text: "Total:\n",
                 children: [
                   TextSpan(
-                    text: "${cartSum(cart)}", //Добавить событие
+                    text: "${cartData.totalAmount()}", //Добавить событие
                     style: TextStyle(fontSize: 16, color: Colors.black), 
                   ),
                 ],
