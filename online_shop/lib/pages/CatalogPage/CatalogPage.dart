@@ -1,39 +1,40 @@
-//import 'dart:convert';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-//import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 import 'package:online_shop/models/Product.dart';
 import 'package:online_shop/pages/CatalogPage/components/ProductItem.dart';
 import 'package:online_shop/pages/CatalogPage/components/Categories.dart';
 import 'package:online_shop/pages/CatalogPage/components/DetailsScreen.dart';
 
 class CatalogPage extends StatefulWidget {
+  const CatalogPage({Key key, this.url}) : super(key: key);
+
+  final String url;
+
   @override
   State<StatefulWidget> createState() {
-    return new MyState();
+    return new MyState(url);
   }
 }
 
 class MyState extends State<CatalogPage> {  
-  
-  //Добавить в конструктор url для загрзки спец.списка для виджета
+  Product product;
+  final String url;
 
-  //List questions;
-  //String endpoint = "https://api.stackexchange.com/2.2/questions?" +
-  //"pagesize=100&order=desc&sort=activity&site=stackoverflow";
+  MyState(this.url); 
 
   @override
   void initState() {
     super.initState();
-    loadData();
+    //loadData();
   }
  
   void loadData() async {
-    // More code here
-    //String rawData = (await http.get(endpoint)).body;
-    //Map jsonData = jsonDecode(rawData);
+    String rawData = (await http.get(url)).body;
+    Map jsonData = jsonDecode(rawData);
     
     setState(() {
-      //questions = jsonData["items"];
+      products = jsonData["items"];
     }); 
   }
   
@@ -44,7 +45,6 @@ class MyState extends State<CatalogPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Categories(), //Лист с категориями. Добавить счетчик
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

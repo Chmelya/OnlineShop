@@ -57,43 +57,4 @@ class CartDataProvider with ChangeNotifier{
     _cartItems.clear();
     notifyListeners();
   }
-
 }
-
-class CounterForCart with ChangeNotifier {
-  int value = 1;
-
-  void increment(){
-    value++;
-    notifyListeners();
-  }
-
-  void decrement(){
-    if(value >= 0){
-      value--;
-    }
-  }
-
-  void setStart(){
-    value = 1;
-  }
-}
-
-// double cartSum(List<Cart> cart){
-//   double sum = 0.0;
-
-//   for(int i = 0; i < cart.length; i++){
-//     sum += cart[i].product.price * cart[i].numOfitems;
-//   }
-
-//   return sum;
-// }
-
-// List<Cart> cart = [
-//   Cart(product: products[0], numOfitems: 2),
-//   Cart(product: products[1], numOfitems: 1),
-//   Cart(product: products[2], numOfitems: 3),
-//   Cart(product: products[3], numOfitems: 2),
-//   Cart(product: products[4], numOfitems: 1),
-//   Cart(product: products[5], numOfitems: 4),
-// ];

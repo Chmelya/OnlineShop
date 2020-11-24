@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/models/Counters.dart';
 import 'package:online_shop/pages/CartPage/CartPage.dart';
 import 'package:online_shop/pages/CatalogPage/CatalogPage.dart';
+import 'package:provider/provider.dart';
+import 'CatalogPage/components/Categories.dart';
 
 class BasePage extends StatefulWidget{
   @override
@@ -9,61 +12,34 @@ class BasePage extends StatefulWidget{
 
 class _BaseState extends State<BasePage>
 {
-  //int _currentIndex = 0;
   PageController pageController = PageController(initialPage: 0);
 
-  // вынести категории сюда
   // добавть переключение на страницу по нажатию на категорию
   @override
   Widget build(BuildContext context){
+    final _currentIndex = Provider.of<CounterForCategories>(context);
     return Scaffold(
       appBar: buildAppBar(context),
-      body: PageView(
-        pageSnapping: true,
-        controller: pageController,
-        onPageChanged: (index){
-          
-        },
+      body: Column(
         children: [
-          CatalogPage(),
-          CatalogPage(), 
+          Categories(pageController: pageController),
+          Expanded(
+              child: PageView(
+              pageSnapping: true,
+              controller: pageController,
+              onPageChanged: (index){
+                _currentIndex.setValue = index;
+              },
+              children: [
+                CatalogPage(),
+                CatalogPage(),
+                CatalogPage(),
+                CatalogPage(), 
+              ],
+            ),
+          ),
         ],
       ), 
-      //CatalogPage(), //tabs[_currentIndex],
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: _currentIndex,
-      //   type: BottomNavigationBarType.shifting,
-      //   selectedFontSize: 15,
-      //   unselectedFontSize: 10,
-      //   iconSize: 25,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //       backgroundColor: Colors.indigo,
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.search),
-      //       label: 'Catalog',
-      //       backgroundColor: Colors.indigo,
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.shopping_cart),
-      //       label: 'Cart',
-      //       backgroundColor: Colors.indigo,
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.account_box),
-      //       label: 'Profile',
-      //       backgroundColor: Colors.indigo,
-      //     ),
-      //   ],
-      //   onTap: (index){
-      //     setState((){
-      //       _currentIndex = index;
-      //     });
-      //   }
-      // ),
     );
   }
 
@@ -71,11 +47,6 @@ class _BaseState extends State<BasePage>
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      // leading: IconButton(
-      //   icon: Icon(Icons.arrow_back),
-      //   color: Colors.black, 
-      //   onPressed: () {},
-      // ),
       title: Text(
         "Shop",
         style: TextStyle(

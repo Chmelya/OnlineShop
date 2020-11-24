@@ -6,6 +6,8 @@ import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/pages/BasePage.dart';
 import 'package:provider/provider.dart';
 
+import 'models/Counters.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,6 +20,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<CounterForCart>(
           create: (context) => CounterForCart(),
+        ),
+        ChangeNotifierProvider<CounterForCategories>(
+          create: (context) => CounterForCategories(),
         ),
       ],
       child: MaterialApp(
