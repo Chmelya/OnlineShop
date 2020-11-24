@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/pages/CatalogPage.dart';
-import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/pages/components/ProductItem.dart';
+import 'package:online_shop/models/Counters.dart';
+import 'package:online_shop/pages/CartPage/CartPage.dart';
+import 'package:online_shop/pages/CatalogPage/CatalogPage.dart';
+import 'package:provider/provider.dart';
+import 'CatalogPage/components/Categories.dart';
 
 class BasePage extends StatefulWidget{
   @override
@@ -10,67 +12,67 @@ class BasePage extends StatefulWidget{
 
 class _BaseState extends State<BasePage>
 {
-  int _currentIndex = 0;
+  PageController pageController = PageController(initialPage: 0);
 
-  //окна
-  final tabs = [
-    SafeArea(child: Center(child: Text('Home'))),
-    CatalogPage(),
-    SafeArea(child: Center(child: Text('Cart'))),
-    SafeArea(child: Center(child: Text('Profile'))),
-  ];
-
+  // добавть переключение на страницу по нажатию на категорию
   @override
   Widget build(BuildContext context){
+    final _currentIndex = Provider.of<CounterForCategories>(context);
     return Scaffold(
-      appBar: buildAppBar(),
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.shifting,
-        selectedFontSize: 15,
-        unselectedFontSize: 10,
-        iconSize: 25,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.indigo,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Catalog',
-            backgroundColor: Colors.indigo,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-            backgroundColor: Colors.indigo,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Profile',
-            backgroundColor: Colors.indigo,
+      appBar: buildAppBar(context),
+      body: Column(
+        children: [
+          Categories(pageController: pageController),
+          Expanded(
+              child: PageView(
+              pageSnapping: true,
+              controller: pageController,
+              onPageChanged: (index){
+                _currentIndex.setValue = index;
+              },
+              children: [
+                CatalogPage(),
+                CatalogPage(),
+                CatalogPage(),
+                CatalogPage(), 
+              ],
+            ),
           ),
         ],
-        onTap: (index){
-          setState((){
-            _currentIndex = index;
-          });
-        }
-      ),
+      ), 
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.indigo,
+      backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back), 
-        onPressed: () {},
+      title: Text(
+        "Shop",
+        style: TextStyle(
+          color: Colors.black,
+        ),
       ),
-      title: new Text("Shop"),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.shopping_cart_outlined,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CartPage()), 
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.account_circle_outlined,
+            color: Colors.black,
+          ),
+          onPressed: () {},
+        ),
+        SizedBox(width: 10),
+      ],
     );
   }
 }

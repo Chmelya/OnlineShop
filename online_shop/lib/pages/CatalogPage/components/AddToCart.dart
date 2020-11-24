@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/models/Cart.dart';
+import 'package:online_shop/models/Counters.dart';
+import 'package:online_shop/models/Product.dart';
+import 'package:provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
   const AddToCart({
-    Key key,
+    Key key, this.productToBuy, 
   }) : super(key: key);
 
+  final Product productToBuy;
   @override
   Widget build(BuildContext context) {
+    final cartCounter = Provider.of<CounterForCart>(context);
+    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Row(
@@ -21,7 +28,9 @@ class AddToCart extends StatelessWidget {
             ),
             child: IconButton(
               icon: Icon(Icons.shopping_cart, color: Colors.cyan),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<CartDataProvider>(context, listen: false).addOrUpdateItem(productToBuy, cartCounter.value); 
+              },
             ),
           ),
           Expanded(

@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/models/Counters.dart';
+import 'package:provider/provider.dart';
 
 class Categories extends StatefulWidget{
+  const Categories({Key key, this.pageController}) : super(key: key);
+  
+  final PageController pageController;
+
   @override
-  _CategoriesState createState() => _CategoriesState();
+  _CategoriesState createState() => _CategoriesState(pageController);
 }
 
 class _CategoriesState extends State<Categories>{
   List<String> categories = ["Hand bag", "Footwear", "Jewellery", "Dresses"];
   
-  int _currentIndex = 0;
-  
+  final  PageController pageController;
+
+  _CategoriesState(this.pageController);
+
   @override
   Widget build(BuildContext context){
     return SizedBox(
@@ -23,10 +31,12 @@ class _CategoriesState extends State<Categories>{
   }
 
   Widget buildCategory(int index){
+    final _currentIndex = Provider.of<CounterForCategories>(context);
     return GestureDetector(
       onTap: () {
         setState(() {
-          _currentIndex = index;
+          _currentIndex.setValue = index;
+          pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.linear);
         });
       },
         child: Padding(
@@ -38,14 +48,14 @@ class _CategoriesState extends State<Categories>{
               categories[index],
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: _currentIndex == index ? Colors.black87 : Colors.grey,
+                color: _currentIndex.value == index ? Colors.black87 : Colors.grey,
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 2),
               height: 2,
               width: 30,
-              color: _currentIndex == index ? Colors.black : Colors.transparent,
+              color: _currentIndex.value == index ? Colors.black : Colors.transparent,
             ),
           ],
         ),
