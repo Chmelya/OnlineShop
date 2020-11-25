@@ -12,7 +12,7 @@ class Categories extends StatefulWidget{
 }
 
 class _CategoriesState extends State<Categories>{
-  List<String> categories = ["Hand bag", "Footwear", "Jewellery", "Dresses"];
+  List<String> categories = ["Sneakers", "Sliders & Flip Flops", "Shoes", "Boots"];
   
   final  PageController pageController;
 
@@ -36,7 +36,7 @@ class _CategoriesState extends State<Categories>{
       onTap: () {
         setState(() {
           _currentIndex.setValue = index;
-          pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.linear);
+          pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.linear);
         });
       },
         child: Padding(
