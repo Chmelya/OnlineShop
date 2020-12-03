@@ -22,7 +22,7 @@ class CounterForCart with ChangeNotifier {
 class CounterForCategories with ChangeNotifier {
   int value = 0;
 
-  void set setValue(int val){
+  set setValue(int val){
     value = val;
     notifyListeners();
   }

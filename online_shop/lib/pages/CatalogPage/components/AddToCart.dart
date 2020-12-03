@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/models/Counters.dart';
 import 'package:online_shop/models/Product.dart';
+import 'package:online_shop/pages/CartPage/CartPage.dart';
 import 'package:provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
@@ -41,7 +42,13 @@ class AddToCart extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                 ),
                 color: Colors.cyan,
-                onPressed: () {},
+                onPressed: (){
+                  Provider.of<CartDataProvider>(context, listen: false).addOrUpdateItem(productToBuy, cartCounter.value); 
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => CartPage()),
+                  );
+                },
                 child: Text(
                   "Buy Now",
                   style: TextStyle(

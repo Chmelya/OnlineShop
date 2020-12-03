@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class CheckCart extends StatelessWidget {
   const CheckCart({
@@ -17,7 +18,6 @@ class CheckCart extends StatelessWidget {
         vertical: 15,
         horizontal: 30,
       ),
-      //height: 120,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
@@ -37,7 +37,7 @@ class CheckCart extends StatelessWidget {
                 text: "Total:\n",
                 children: [
                   TextSpan(
-                    text: "${cartData.totalAmount()}", 
+                    text: "${cartData.totalAmount().toStringAsFixed(2)}", 
                     style: TextStyle(fontSize: 16, color: Colors.black), 
                   ),
                 ],
@@ -47,16 +47,23 @@ class CheckCart extends StatelessWidget {
               width: 200,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.black,
+                    width: 2,
+                    style: BorderStyle.solid,
+                  ),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                color: Colors.cyan,
-                onPressed: () {
-                  //Покупка корзины. Добавить уведомление и отправка на сервер заказа
-                  Provider.of<CartDataProvider>(context, listen: false).clearCart();
+                color: Colors.white,
+                onPressed: () async {
+                  http.Response response = await http.post("http://10.0.2.2:8000/shop/Purchases/5");
+                  if(response.statusCode == 200){
+                    Provider.of<CartDataProvider>(context, listen: false).clearCart();
+                  }
                 },
                 child: Text(
                   "Check out", 
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
               ), 
             ),

@@ -10,6 +10,6 @@ namespace API.Models
     {
         [Key]
         public string CategoryName { get; set; }
-        public List<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Product> Products { get; set; }
     }
 }
