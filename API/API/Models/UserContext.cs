@@ -4,8 +4,8 @@ namespace API.Models
 {
     public class UserContext : DbContext
     {
-        DbSet<User> Users { get; set; }
-        public UserContext(DbContextOptions<CategoryContext> options) : base(options)
+        public DbSet<User> Users { get; set; }
+        public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
             Database.EnsureCreated();
         }

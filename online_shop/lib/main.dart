@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/pages/BasePage.dart';
-import 'package:online_shop/pages/LoginPage/LoginPage.dart';
+import 'package:online_shop/pages/AuthorizationPages/LoginPage.dart';
 import 'package:provider/provider.dart';
 
 import 'models/Counters.dart';
