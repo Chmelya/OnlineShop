@@ -20,13 +20,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            
             services.AddDbContext<CategoryContext>(options =>
-                options.UseSqlServer(connection));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductsConnection")));
             
             services.AddDbContext<UserContext>(options =>
-                options.UseSqlServer(connection));
+                options.UseSqlServer(Configuration.GetConnectionString("UsersConnection")));
+
+            services.AddDbContext<OrderContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("OrdersConnection")));
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>

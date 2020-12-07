@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models
 {
@@ -13,7 +12,6 @@ namespace API.Models
         public string Subtitle { get; set; }
         public double Price { get; set; }
         public string CategoryName { get; set; }
-        [ForeignKey("CategoryName")]
         public Category Category { get; set; }
     }
 }

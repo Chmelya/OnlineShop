@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop/models/Cart.dart';
-import 'package:online_shop/pages/BasePage.dart';
+import 'package:online_shop/pages/AccountPage/AccountPage.dart';
 import 'package:online_shop/pages/AuthorizationPages/LoginPage.dart';
 import 'package:provider/provider.dart';
 
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
+        //home: AccountPage(),
         home: LoginPage(),
-        //home: BasePage(),
       ),
     );
   }

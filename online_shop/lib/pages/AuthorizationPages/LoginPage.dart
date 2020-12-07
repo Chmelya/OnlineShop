@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:online_shop/StaticData.dart';
 import '../BasePage.dart';
 import 'RegistrationPage.dart';
 
@@ -123,10 +122,12 @@ class _LoginPageState extends State<LoginPage> {
               'Content-Type': 'application/json; charset=UTF-8',
             },
             body: jsonEncode(<String, String>{
-              "name": loginTextFieldController.text,
-              "password": passwordTextFieldController.text
+              "name": loginTextFieldController.text.trim(),
+              "password": passwordTextFieldController.text.trim()
             }), 
           );
+
+          StaticData.userId = response.body;
           
           if(response.statusCode == 200){
             Navigator.pushAndRemoveUntil(

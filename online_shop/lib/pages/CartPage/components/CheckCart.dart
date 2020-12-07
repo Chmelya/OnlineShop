@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../StaticData.dart';
 
 class CheckCart extends StatelessWidget {
   const CheckCart({
@@ -47,23 +51,38 @@ class CheckCart extends StatelessWidget {
               width: 200,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.black,
-                    width: 2,
-                    style: BorderStyle.solid,
-                  ),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                color: Colors.white,
+                color: Colors.cyan,
                 onPressed: () async {
-                  http.Response response = await http.post("http://10.0.2.2:8000/shop/Purchases/5");
+                  // List<Map <String, dynamic> > purchasesListForApi(){
+                  //   List<Map <String, dynamic>> list = [];
+
+                  //   cartData.cartItems.forEach((key, value) {
+                  //     list.add(value.toJsonForApi());
+                  //   });
+
+                  //   return list;
+                  // }
+
+                  // Map<String, dynamic> toJsonForApi() =>{
+                  //   'userid' : StaticData.userId,
+                  //   'purchases': jsonEncode(purchasesListForApi())
+                  // }; 
+
+                  http.Response response = await http.post(
+                    "http://10.0.2.2:8000/shop/Orders/SendOrder",
+                    body: jsonEncode(cartData.toJsonForApi()), 
+                    headers: {"Content-Type": "application/json"}
+                  );
+
                   if(response.statusCode == 200){
                     Provider.of<CartDataProvider>(context, listen: false).clearCart();
                   }
                 },
                 child: Text(
                   "Check out", 
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ), 
             ),
