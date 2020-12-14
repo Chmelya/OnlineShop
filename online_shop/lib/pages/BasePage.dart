@@ -31,10 +31,10 @@ class _BaseState extends State<BasePage>
                 _currentIndex.setValue = index;
               },
               children: [
-                CatalogPage(),
-                CatalogPage(),
-                CatalogPage(),
-                CatalogPage(), 
+                CatalogPage(endPoint: "HandBags"),
+                CatalogPage(endPoint: "HandBags"),
+                CatalogPage(endPoint: "HandBags"),
+                CatalogPage(endPoint: "HandBags"), 
               ],
             ),
           ),

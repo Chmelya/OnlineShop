@@ -12,7 +12,7 @@ class Categories extends StatefulWidget{
 }
 
 class _CategoriesState extends State<Categories>{
-  List<String> categories = ["Hand bag", "Footwear", "Jewellery", "Dresses"];
+  List<String> categories = ["Sneakers", "Sliders & Flip Flops", "Shoes", "Boots"];
   
   final  PageController pageController;
 
@@ -20,12 +20,15 @@ class _CategoriesState extends State<Categories>{
 
   @override
   Widget build(BuildContext context){
-    return SizedBox(
-      height: 35,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) => buildCategory(index)
+    return Container(
+      color: Colors.white,
+        child: SizedBox(
+        height: 35,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          itemBuilder: (context, index) => buildCategory(index)
+        ),
       ),
     );
   }
@@ -36,7 +39,7 @@ class _CategoriesState extends State<Categories>{
       onTap: () {
         setState(() {
           _currentIndex.setValue = index;
-          pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.linear);
+          pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.linear);
         });
       },
         child: Padding(

@@ -1,60 +1,24 @@
 class Product{
-  final String image, title, description;
+  final String image, title, description, subtitle;
   final int id;
   final double price;
   Product({
+    this.subtitle, 
     this.id,
     this.image,
     this.title,
     this.price,
     this.description,
   });
+
+  factory Product.fromJson(Map<String, dynamic> data){
+    return Product(
+      id: data["id"],
+      image: data["image"],
+      title: data["title"],
+      price: data["price"],
+      description: data["description"],
+      subtitle: data["subtitle"]
+    );
+  }
 }
-
-List<Product> products = [
-  Product(
-      id: 1,
-      title: "Office Code",
-      price: 234,
-      description: dummyText,
-      image: "assets/images/bag_1.png",
-  ),
-  Product(
-      id: 2,
-      title: "Belt Bag",
-      price: 134,
-      description: dummyText,
-      image: "assets/images/bag_2.png",
-  ),
-  Product(
-      id: 3,
-      title: "Hang Top",
-      price: 634,
-      description: dummyText,
-      image: "assets/images/bag_3.png",
-  ),
-  Product(
-      id: 4,
-      title: "Old Fashion",
-      price: 300,
-      description: dummyText,
-      image: "assets/images/bag_4.png",
-  ),
-  Product(
-      id: 5,
-      title: "Office Code",
-      price: 199,
-      description: dummyText,
-      image: "assets/images/bag_5.png",
-  ),
-  Product(
-    id: 6,
-    title: "Office Code",
-    price: 265,
-    description: dummyText,
-    image: "assets/images/bag_6.png",
-  ),
-];
-
-String dummyText =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. When an unknown printer took a galley.";

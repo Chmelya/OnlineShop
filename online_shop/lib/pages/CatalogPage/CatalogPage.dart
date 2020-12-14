@@ -3,39 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:online_shop/models/Product.dart';
 import 'package:online_shop/pages/CatalogPage/components/ProductItem.dart';
-import 'package:online_shop/pages/CatalogPage/components/Categories.dart';
 import 'package:online_shop/pages/CatalogPage/components/DetailsScreen.dart';
 
 class CatalogPage extends StatefulWidget {
-  const CatalogPage({Key key, this.url}) : super(key: key);
+  const CatalogPage({Key key, this.endPoint}) : super(key: key);
 
-  final String url;
+  final String endPoint;
 
   @override
   State<StatefulWidget> createState() {
-    return new MyState(url);
+    return new MyState(endPoint);
   }
 }
 
 class MyState extends State<CatalogPage> {  
-  Product product;
-  final String url;
+  MyState(this.endPoint); 
 
-  MyState(this.url); 
+  List<Product> products;
+  final String endPoint;
 
   @override
   void initState() {
     super.initState();
-    //loadData();
+    loadData();
   }
  
   void loadData() async {
-    String rawData = (await http.get(url)).body;
-    Map jsonData = jsonDecode(rawData);
+    String rawData = (await http.get("http://10.0.2.2:8000/shop/Products/" + endPoint)).body;
+    List<dynamic> jsonData = jsonDecode(rawData);
     
     setState(() {
-      products = jsonData["items"];
+      products = jsonData.map((data) => Product.fromJson(data)).toList();
     }); 
+    
   }
   
   @override

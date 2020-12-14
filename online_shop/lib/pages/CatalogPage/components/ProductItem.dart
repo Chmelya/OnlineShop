@@ -38,7 +38,7 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           Text(
-            "\$${product.price}",
+            "\$${product.price.toStringAsFixed(2)}",
              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,

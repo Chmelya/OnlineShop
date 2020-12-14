@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Counters.dart';
 import 'package:provider/provider.dart';
-import 'package:online_shop/models/Cart.dart';
 
 class CartCounter extends StatefulWidget {
   @override

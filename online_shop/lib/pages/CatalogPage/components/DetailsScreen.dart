@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/models/Product.dart';
 import 'package:online_shop/pages/CatalogPage/components/DetailsScreen_body.dart';
-import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget{
   final Product product;

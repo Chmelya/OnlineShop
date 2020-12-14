@@ -21,7 +21,7 @@ class CartItemCard extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.black45,
+                color: Colors.cyan,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.asset(cart.product.image),
@@ -43,13 +43,13 @@ class CartItemCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: "\$${cart.product.price}",
+                text: "\$${cart.product.price.toStringAsFixed(2)}",
                 style: TextStyle(
                   color: Colors.cyan,
                 ),
                 children: [
                   TextSpan(
-                    text: " x${cart.numOfitems}",
+                    text: " x${cart.amount}",
                     style: TextStyle(
                       color: Colors.black54,
                     ),

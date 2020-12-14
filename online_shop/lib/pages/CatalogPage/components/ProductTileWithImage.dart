@@ -17,7 +17,7 @@ class ProductTileWithImage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Beautiful Hand bag",
+            "${product.subtitle}",
             style: TextStyle(color: Colors.white),
           ),
           Text(
@@ -37,7 +37,7 @@ class ProductTileWithImage extends StatelessWidget {
                 text: TextSpan(children: [
                   TextSpan(text: "Price\n"),
                   TextSpan(
-                    text: "\$${product.price}",
+                    text: "\$${product.price.toStringAsFixed(2)}",
                     style: Theme.of(context)
                     .textTheme
                     .headline4
