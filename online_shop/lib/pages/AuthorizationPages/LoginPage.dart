@@ -116,27 +116,29 @@ class _LoginPageState extends State<LoginPage> {
       child: RaisedButton(
         elevation: 5,
         onPressed: () async{
-          http.Response response = await http.post(
-            "http://10.0.2.2:8000/shop/Account/Login",
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: jsonEncode(<String, String>{
-              "name": loginTextFieldController.text.trim(),
-              "password": passwordTextFieldController.text.trim()
-            }), 
-          );
+          try{
+           http.Response response = await http.post(
+             "http://10.0.2.2:8000/shop/Account/Login",
+             headers: <String, String>{
+               'Content-Type': 'application/json; charset=UTF-8',
+             },
+             body: jsonEncode(<String, String>{
+               "name": loginTextFieldController.text.trim(),
+               "password": passwordTextFieldController.text.trim()
+             }), 
+           );
+  
+           if(response.statusCode == 200){
+             StaticData.userId = response.body;
+             Navigator.pushAndRemoveUntil(
+               context,
+               MaterialPageRoute(builder: (context) => BasePage()),
+               (r) => false
+             );
+           }
+          }catch(e){
 
-          StaticData.userId = response.body;
-          
-          if(response.statusCode == 200){
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => BasePage()),
-              (r) => false
-            );
           }
-
         },
         padding: EdgeInsets.all(15),
         shape: RoundedRectangleBorder(

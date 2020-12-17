@@ -29,13 +29,16 @@ class MyState extends State<CatalogPage> {
   }
  
   void loadData() async {
-    String rawData = (await http.get("http://10.0.2.2:8000/shop/Products/" + endPoint)).body;
-    List<dynamic> jsonData = jsonDecode(rawData);
-    
-    setState(() {
-      products = jsonData.map((data) => Product.fromJson(data)).toList();
-    }); 
-    
+    try{
+      String rawData = (await http.get("http://10.0.2.2:8000/shop/Products/" + endPoint)).body;
+      List<dynamic> jsonData = jsonDecode(rawData);
+      
+      setState(() {
+        products = jsonData.map((data) => Product.fromJson(data)).toList();
+      }); 
+    } catch(e){
+
+    }
   }
   
   @override
