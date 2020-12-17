@@ -85,6 +85,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         elevation: 5,
         onPressed: () async{
           if (passwordTextFieldController.text == confirmPasswordTextFieldController.text) {
+            try{
             http.Response response = await http.post(
               "http://10.0.2.2:8000/shop/Account/Registration",
               headers: <String, String>{
@@ -98,6 +99,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
             
             if(response.statusCode == 200){
               Navigator.pop(context);
+            }
+            } catch (e){
+              
             }
           }
         },

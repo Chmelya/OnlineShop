@@ -13,8 +13,6 @@ class BasePage extends StatefulWidget{
 class _BaseState extends State<BasePage>
 {
   PageController pageController = PageController(initialPage: 0);
-
-  // добавть переключение на страницу по нажатию на категорию
   @override
   Widget build(BuildContext context){
     final _currentIndex = Provider.of<CounterForCategories>(context);
@@ -31,10 +29,10 @@ class _BaseState extends State<BasePage>
                 _currentIndex.setValue = index;
               },
               children: [
-                CatalogPage(endPoint: "HandBags"),
-                CatalogPage(endPoint: "HandBags"),
-                CatalogPage(endPoint: "HandBags"),
-                CatalogPage(endPoint: "HandBags"), 
+                CatalogPage(endPoint: "Sneakers"),
+                CatalogPage(endPoint: "Sliders"),
+                CatalogPage(endPoint: "Shoes"),
+                CatalogPage(endPoint: "Boots"), 
               ],
             ),
           ),
@@ -64,13 +62,13 @@ class _BaseState extends State<BasePage>
             MaterialPageRoute(builder: (context) => CartPage()), 
           ),
         ),
-        IconButton(
-          icon: Icon(
-            Icons.account_circle_outlined,
-            color: Colors.black,
-          ),
-          onPressed: () {},
-        ),
+        // IconButton(
+        //   icon: Icon(
+        //     Icons.account_circle_outlined,
+        //     color: Colors.black,
+        //   ),
+        //   onPressed: () {},
+        // ),
         SizedBox(width: 10),
       ],
     );

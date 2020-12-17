@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KlA0h6R86y9gAgoxjM9xmfUW0xh5W7hUP4seymY7VXIYka5tfcl82/j/ibNnbm/xFC14ZhoCrrrj+Vmg601ZEg==",
+  "dgSpecHash": "MDNEYgEEePYkro5zZKSCzZKeDIEnfq0Y6L8c396eiwKupfzh7CfQhY7CXVUGLqUXgoNVKNIMIMVZhbMlq2hXRw==",
   "success": true,
   "projectFilePath": "D:\\OnlineShop\\API\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -96,7 +96,9 @@
     "C:\\Users\\chmel\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\chmel\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\chmel\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\chmel\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\chmel\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\chmel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\chmel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }
