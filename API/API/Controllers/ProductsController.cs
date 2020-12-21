@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Provides information about products.
+    /// </summary>
     [ApiController]
     [Route("shop/[controller]")]
     public class ProductsController : Controller
@@ -13,6 +16,11 @@ namespace API.Controllers
         CategoryContext db;
       static string dummyText =
    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. When an unknown printer took a galley.";
+
+        /// <summary>
+        /// Initialize controller.
+        /// </summary>
+        /// <param name="context">Intialize database context of products.</param> 
         public ProductsController(CategoryContext context)
         {
             db = context;
@@ -51,7 +59,12 @@ namespace API.Controllers
             db.SaveChanges();
         }
 
-        // GET shop/Products/{category}
+        /// GET shop/Products/{category}
+        /// <summary>
+        /// Returns products of the selected category.
+        /// </summary>
+        /// <param name="category">Category name from url</param>
+        /// <returns>JSON response with status code</returns>
         [HttpGet("{category}")]
         public ActionResult GetCategoryProducts(string category)
         {
