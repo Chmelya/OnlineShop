@@ -46,7 +46,7 @@ class MyState extends State<CatalogPage> {
 
   @override
   Widget build(BuildContext context) {
-    //final ProductBloc productBloc = BlocProvider.of<ProductBloc>(context);
+    final ProductBloc productBloc = BlocProvider.of<ProductBloc>(context);
     return new Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -56,7 +56,41 @@ class MyState extends State<CatalogPage> {
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: BlocBuilder<ProductBloc, ProductState>(
-                  builder: (context, state) {
+                    builder: (context, state) {
+                  if (state is ProductCategoryEmptyState) {
+                    return Center(
+                      child: Column(
+                        children: [
+                          Text("Something went wrong, try again."),
+                          IconButton(
+                              onPressed: () => productBloc
+                                  .add(ProductCategoryLoadEvent(endPoint)),
+                              icon: Icon(
+                                Icons.sync,
+                                color: Colors.cyan,
+                              ))
+                        ],
+                      ),
+                    );
+                  }
+
+                  if (state is ProductCategoryErrorState) {
+                    return Center(
+                      child: Column(
+                        children: [
+                          Text("Something went wrong, try again."),
+                          IconButton(
+                              onPressed: () => productBloc
+                                  .add(ProductCategoryLoadEvent(endPoint)),
+                              icon: Icon(
+                                Icons.sync,
+                                color: Colors.cyan,
+                              ))
+                        ],
+                      ),
+                    );
+                  }
+
                   if (state is ProductCategoryLoadingState) {
                     return Center(
                       child: CircularProgressIndicator(),
@@ -87,9 +121,7 @@ class MyState extends State<CatalogPage> {
                               ),
                             ));
                   }
-                }
-              )
-            ),
+                })),
           ),
         ],
       ),
