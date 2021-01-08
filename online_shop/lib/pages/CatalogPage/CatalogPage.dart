@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/bloc/product_bloc.dart';
-import 'package:online_shop/bloc/product_event.dart';
-import 'package:online_shop/bloc/product_state.dart';
+import 'package:online_shop/bloc/product/product_bloc.dart';
+import 'package:online_shop/bloc/product/product_event.dart';
+import 'package:online_shop/bloc/product/product_state.dart';
 import 'package:online_shop/pages/CatalogPage/components/ProductItem.dart';
 import 'package:online_shop/pages/CatalogPage/components/DetailsScreen.dart';
 

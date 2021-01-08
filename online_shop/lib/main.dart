@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:online_shop/bloc/product_bloc.dart';
+import 'package:online_shop/bloc/product/product_bloc.dart';
 import 'package:online_shop/models/Cart.dart';
 import 'package:online_shop/pages/AuthorizationPages/LoginPage.dart';
-import 'package:online_shop/services/ProductsRepository.dart';
+import 'package:online_shop/services/product/ProductsRepository.dart';
 import 'package:provider/provider.dart';
 
 import 'models/Counters.dart';
