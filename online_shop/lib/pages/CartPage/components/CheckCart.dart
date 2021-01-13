@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:online_shop/models/Cart.dart';
+import 'package:online_shop/services/cart/CartProvider.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 class CheckCart extends StatelessWidget {
   const CheckCart({
@@ -12,9 +10,8 @@ class CheckCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final cartData = Provider.of<CartDataProvider>(context);
-    
+  
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: 15,
@@ -52,21 +49,7 @@ class CheckCart extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 color: Colors.cyan,
-                onPressed: () async {
-                  try{
-                    http.Response response = await http.post(
-                      "http://10.0.2.2:8000/shop/Orders/SendOrder",
-                      body: jsonEncode(cartData.toJsonForApi()), 
-                      headers: {"Content-Type": "application/json"}
-                    );
-
-                    if(response.statusCode == 200){
-                      Provider.of<CartDataProvider>(context, listen: false).clearCart();
-                    }
-                  } catch(e){
-
-                  }
-                },
+                onPressed: () => CartProvider().sendOrder(context),
                 child: Text(
                   "Check out", 
                   style: TextStyle(color: Colors.white),

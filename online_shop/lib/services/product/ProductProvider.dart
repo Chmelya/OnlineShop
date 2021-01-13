@@ -4,8 +4,6 @@ import 'package:online_shop/models/Product.dart';
 import 'package:http/http.dart' as http;
 
 class ProductProvider{
-  //List<String> categories = ["Sneakers","Sliders","Shoes", "Boots"];
-
   Future<List<Product>> getCategoryProducts(String endPoint) async{
     final response = await http.get("http://10.0.2.2:8000/shop/Products/" + endPoint);
 

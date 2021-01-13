@@ -1,5 +1,5 @@
 import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/services/ProductProvider.dart';
+import 'package:online_shop/services/product/ProductProvider.dart';
 
 class ProductsRepository{
   ProductProvider _productProvider = ProductProvider();

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/bloc/product/product_event.dart';
 import 'package:online_shop/bloc/product/product_state.dart';
 import 'package:online_shop/models/Product.dart';
-import 'package:online_shop/services/ProductsRepository.dart';
+import 'package:online_shop/services/product/ProductsRepository.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductsRepository productsRepository;
