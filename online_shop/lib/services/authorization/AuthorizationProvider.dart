@@ -18,8 +18,10 @@ class AuthorizationProvider {
         StaticData.userId = response.body;
         return true;
       }
+      else{
+        return false;
+      }
 
-      return false;
     } catch (e) {
       return false;
     }
